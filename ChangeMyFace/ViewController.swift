@@ -74,24 +74,3 @@ extension ViewController: ARSCNViewDelegate {
 
 }
 
-extension ViewController: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
-
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return photos.count
-    }
-
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath)
-        let imageView = cell.contentView.viewWithTag(1) as! UIImageView
-        let cellImage = UIImage(named: photos[indexPath.row])
-        imageView.image = cellImage
-
-        return cell
-    }
-
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let cellSize = self.view.bounds.width / 4
-        return CGSize(width: cellSize, height: cellSize)
-    }
-
-}
